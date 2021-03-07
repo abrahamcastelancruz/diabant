@@ -26,25 +26,42 @@
     [ngClass]="{ 'is-active': hamburger }"
   >
     <div class="navbar-end">
-      <a class="navbar-item" routerLink="/home" routerLinkActive="link-active">
+      <a
+        class="navbar-item"
+        routerLink="/home"
+        (click)="showMenu()"
+        routerLinkActive="link-active"
+      >
         Inicio
       </a>
       <a
         class="navbar-item"
         routerLink="/services"
+        (click)="showMenu()"
         routerLinkActive="link-active"
       >
         Servicios
       </a>
-      <a class="navbar-item" routerLink="/about" routerLinkActive="link-active">
+      <a
+        class="navbar-item"
+        routerLink="/about"
+        (click)="showMenu()"
+        routerLinkActive="link-active"
+      >
         Acerca de Nosotros
       </a>
-      <a class="navbar-item" routerLink="/faq" routerLinkActive="link-active">
+      <a
+        class="navbar-item"
+        routerLink="/faq"
+        (click)="showMenu()"
+        routerLinkActive="link-active"
+      >
         FAQ
       </a>
       <a
         class="navbar-item"
         routerLink="/contact"
+        (click)="showMenu()"
         routerLinkActive="link-active"
       >
         Contacto
@@ -53,6 +70,7 @@
         <a
           class="button is-medium is-outlined is-primary"
           routerLink="/login"
+          (click)="showMenu()"
           routerLinkActive="link-active"
         >
           <strong>Ingresar</strong>

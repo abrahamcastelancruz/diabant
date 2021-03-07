@@ -13,6 +13,18 @@ body {
   color: #6d7a88;
 }
 
+.title {
+  color: var(--primary) !important;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700 !important;
+}
+
+.btn-primary {
+  background-color: var(--primary) !important;
+  color: white !important;
+  font-size: 1.2rem !important;
+}
+
 /*  font-family: 'Josefin Sans', sans-serif;
     font-family: 'Quicksand', sans-serif;
 */
