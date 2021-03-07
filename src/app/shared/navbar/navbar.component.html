@@ -1,0 +1,63 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/">
+      <img
+        class="logo"
+        src="assets/images/logo.png"
+        alt="Bulma: Free, open source, and modern CSS framework based on Flexbox"
+      />
+    </a>
+    <a
+      role="button"
+      class="navbar-burger"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navbarItems"
+      (click)="showMenu()"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div
+    id="navbarItems"
+    class="navbar-menu"
+    [ngClass]="{ 'is-active': hamburger }"
+  >
+    <div class="navbar-end">
+      <a class="navbar-item" routerLink="/home" routerLinkActive="link-active">
+        Inicio
+      </a>
+      <a
+        class="navbar-item"
+        routerLink="/services"
+        routerLinkActive="link-active"
+      >
+        Servicios
+      </a>
+      <a class="navbar-item" routerLink="/about" routerLinkActive="link-active">
+        Acerca de Nosotros
+      </a>
+      <a class="navbar-item" routerLink="/faq" routerLinkActive="link-active">
+        FAQ
+      </a>
+      <a
+        class="navbar-item"
+        routerLink="/contact"
+        routerLinkActive="link-active"
+      >
+        Contacto
+      </a>
+      <div class="navbar-item">
+        <a
+          class="button is-medium is-outlined is-primary"
+          routerLink="/login"
+          routerLinkActive="link-active"
+        >
+          <strong>Ingresar</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

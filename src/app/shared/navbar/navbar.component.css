@@ -1,0 +1,64 @@
+.navbar {
+  height: 9vh;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  height: 100%;
+  align-items: center;
+}
+
+.navbar-item {
+  height: 100%;
+}
+
+.logo {
+  width: 150px;
+  max-height: 6vh;
+}
+
+.navbar-burger {
+  height: 100%;
+}
+
+.navbar-menu {
+  text-align: center;
+}
+
+.navbar-item {
+  color: var(--text-gray);
+  font-weight: 300;
+  font-size: 1.4rem;
+  transition: 0.3s ease-in-out;
+}
+
+.link-active {
+  background-color: var(--text-gray-alpha);
+  color: var(--primary);
+}
+
+.navbar-item .button {
+  width: 75%;
+  border: 3px var(--primary) solid;
+  color: var(--primary);
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-item .button:hover {
+  background-color: var(--primary-light-alpha);
+}
+
+@media only screen and (min-width: 1024px) {
+  .logo {
+    width: 200px;
+    max-height: 9vh;
+  }
+
+  .navbar-item .button {
+    width: 100%;
+  }
+
+  .navbar-menu .navbar-item:hover {
+    color: var(--primary);
+  }
+}
