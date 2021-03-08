@@ -10,10 +10,11 @@
   display: grid;
   grid-template-rows: 60%, 40%;
   max-height: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
 }
 
-.hero-text .hero-description {
+.hero-text .hero-description,
+.about-description {
   font-size: 1.5rem;
   font-weight: 200;
 }
@@ -34,7 +35,78 @@
 }
 
 .btn-primary {
-  border: var(--primary);
+  margin-top: 1rem;
+}
+
+.services-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.services-section .services-image {
+  max-width: 100%;
+}
+
+.services-section .title {
+  margin-top: 1.5rem;
+}
+
+.services {
+  background-color: var(--secondary);
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  row-gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.services-grid .service {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.service fa-icon {
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.service .service-description {
+  text-align: left;
+  margin-left: 0.5rem;
+}
+
+.service-description p {
+  font-weight: 300;
+}
+
+.how-title {
+  color: var(--primary) !important;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700 !important;
+  font-size: 1.8rem;
+  display: block;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.how-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.how-section .how-image {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.how-section .how-text {
+  font-weight: 300;
+  font-size: 1.4rem;
   margin-top: 1rem;
 }
 
@@ -42,6 +114,32 @@
   .hero-image {
     margin: 0 auto;
     width: 50%;
+  }
+
+  .about-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-image {
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  .services-section .title {
+    font-size: 2.2rem;
+  }
+
+  .services-grid .service .service-title {
+    font-size: 1.8rem;
+  }
+
+  .service p {
+    font-size: 1.5rem;
+  }
+
+  .how-section .how-text {
+    font-size: 1.5rem;
   }
 }
 
@@ -68,7 +166,8 @@
     font-size: 3rem;
   }
 
-  .hero-text .hero-description {
+  .hero-text .hero-description,
+  .about-description {
     font-size: 2rem;
   }
 
@@ -83,5 +182,42 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
+  }
+
+  .about-section {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-description {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .about-image {
+    width: 100%;
+    max-width: 100%;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .services-section {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  .services-grid {
+    height: 70%;
+    align-items: center;
+  }
+
+  .how-title {
+    font-size: 2.2rem;
+  }
+
+  .how-section .how-text {
+    text-align: center;
   }
 }
