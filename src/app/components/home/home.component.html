@@ -87,3 +87,68 @@
     </div>
   </div>
 </section>
+<section class="our-team">
+  <article class="team">
+    <h2 class="title">Nuestro Equipo</h2>
+    <div class="team-members">
+      <div class="member">
+        <img src="assets/images/alan.png" alt="" />
+        <p class="member-name">Alan Humberto Samperio González</p>
+      </div>
+      <div class="member">
+        <img src="assets/images/abraham.png" alt="" />
+        <p class="member-name">Abraham Castelan Cruz</p>
+      </div>
+      <div class="member">
+        <img src="assets/images/erick.png" alt="" />
+        <p class="member-name">Erick Rubén Quiróz Bautista</p>
+      </div>
+    </div>
+  </article>
+  <article class="contact">
+    <h2 class="title">Contáctanos</h2>
+    <form [formGroup]="contactForm" class="contact-form">
+      <mat-form-field>
+        <mat-label>Nombre Completo : </mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="name"
+          placeholder="Ingresa tu nombre"
+        />
+        <mat-error *ngIf="hasError('name', 'required')">
+          El nombre es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Correo Electrónico : </mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="someone@somemail.com"
+        />
+        <mat-error *ngIf="hasError('email', 'email')">
+          Por favor ingresa un correo electrónico válido
+        </mat-error>
+        <mat-error *ngIf="hasError('email', 'required')">
+          El correo electrónico es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Mensaje : </mat-label>
+        <textarea
+          matInput
+          placeholder="Escríbenos...."
+          formControlName="desc"
+        ></textarea>
+        <mat-error *ngIf="hasError('desc', 'required')">
+          El mensaje es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <button routerLink="/services" class="button btn-primary">
+        Enviar Mensaje
+      </button>
+    </form>
+  </article>
+</section>

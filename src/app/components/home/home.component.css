@@ -110,6 +110,25 @@
   margin-top: 1rem;
 }
 
+.our-team {
+  text-align: center;
+}
+
+.team {
+  background-color: var(--secondary);
+  padding: 2rem 0;
+}
+
+.member {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.contact {
+  background-color: var(--primary-light);
+  padding: 2rem 0;
+}
+
 @media only screen and (min-width: 768px) {
   .hero-image {
     margin: 0 auto;
@@ -140,6 +159,16 @@
 
   .how-section .how-text {
     font-size: 1.5rem;
+  }
+
+  .team-members {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .member {
+    width: 80%;
+    font-weight: 300;
+    font-size: 1.3rem;
   }
 }
 
@@ -219,5 +248,14 @@
 
   .how-section .how-text {
     text-align: center;
+  }
+
+  .our-team {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  .contact {
+    height: 100%;
   }
 }

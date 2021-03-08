@@ -30,3 +30,12 @@ body {
 /*  font-family: 'Josefin Sans', sans-serif;
     font-family: 'Quicksand', sans-serif;
 */
+
+.contact-form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.contact-form mat-form-field {
+  width: 100%;
+}
