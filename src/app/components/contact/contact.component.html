@@ -1,1 +1,90 @@
-<p>contact works!</p>
+<app-navbar></app-navbar>
+<section class="hero is-halfheight">
+  <div class="hero-body">
+    <h1 class="title">Contáctanos</h1>
+  </div>
+</section>
+<section class="hero is-medium">
+  <div class="hero-body">
+    <div class="social">
+      <fa-icon [icon]="facebook"></fa-icon>
+      <h3>Facebook</h3>
+      <p>
+        Síguenos en nuestra página, de facebook para obtener las últimas
+        noticias.
+      </p>
+    </div>
+    <div class="social">
+      <fa-icon [icon]="twitter"></fa-icon>
+      <h3>Twitter</h3>
+      <p>
+        Síguenos para estar al día de noticias y estar enterado del
+        mantenimiento de la App.
+      </p>
+    </div>
+    <div class="social">
+      <fa-icon [icon]="instagram"></fa-icon>
+      <h3>Instagram</h3>
+      <p>
+        Podrás ver nuestra galería de imágenes, que tenémos para ti, además de
+        poder ver las últimas noticias.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="contact-section container is-widescreen">
+    <div class="contact">
+      <h2 class="title">Ponte en Contacto con Nosotros</h2>
+      <form [formGroup]="contactForm" class="contact-form">
+        <mat-form-field>
+          <mat-label>Nombre Completo : </mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="name"
+            placeholder="Ingresa tu nombre"
+          />
+          <mat-error *ngIf="hasError('name', 'required')">
+            El nombre es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Correo Electrónico : </mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="someone@somemail.com"
+          />
+          <mat-error *ngIf="hasError('email', 'email')">
+            Por favor ingresa un correo electrónico válido
+          </mat-error>
+          <mat-error *ngIf="hasError('email', 'required')">
+            El correo electrónico es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Mensaje : </mat-label>
+          <textarea
+            matInput
+            placeholder="Escríbenos...."
+            formControlName="desc"
+          ></textarea>
+          <mat-error *ngIf="hasError('desc', 'required')">
+            El mensaje es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+        <button routerLink="/services" class="button btn-primary">
+          Enviar Mensaje
+        </button>
+      </form>
+    </div>
+    <img
+      src="./assets/images/contactPageImage.png"
+      alt=""
+      class="contact-image"
+    />
+  </div>
+</section>
+<app-footer></app-footer>

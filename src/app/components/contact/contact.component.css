@@ -1,0 +1,75 @@
+.hero.is-halfheight {
+  background-image: url("../../../assets/images/contactHero.png");
+  background-size: cover;
+  background-position: center center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero .hero-body .title {
+  color: #ffffff !important;
+  font-size: 2.4rem;
+}
+
+.hero.is-medium {
+  background-color: #151514;
+}
+
+.hero.is-medium .hero-body {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+.hero-body .social {
+  margin-bottom: 1rem;
+}
+
+.hero-body fa-icon {
+  font-size: 3rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero.is-medium .hero-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .contact-image {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hero.is-medium .hero-body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+  }
+
+  .social {
+    text-align: left;
+  }
+
+  .contact-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .contact-image {
+    width: 80%;
+    max-width: 100%;
+  }
+}

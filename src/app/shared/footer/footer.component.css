@@ -10,6 +10,23 @@
   color: #ffffff;
 }
 
+.footer-menu .navbar-item {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.navbar-item:hover {
+  background-color: transparent;
+}
+
+.navbar-item:active {
+  background-color: transparent;
+}
+
+.link-active {
+  border-bottom: 1px solid var(--primary);
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -23,7 +40,34 @@
 .footer p {
   color: #ffffff;
   text-align: center;
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-menu a {
+    text-align: center;
+    display: block;
+  }
+
+  .navbar-end {
+    width: 100%;
+  }
+
+  .navbar-end .navbar-item {
+    width: 100%;
+  }
+
+  .buttons {
+    width: 100%;
+  }
 }

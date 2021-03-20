@@ -1,1 +1,111 @@
-<p>services works!</p>
+<app-navbar></app-navbar>
+<section class="hero is-halfheight">
+  <div class="hero-body">
+    <h1 class="title">Nuestros Servicios</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="services container is-widescreen">
+    <h2 class="title">Brindamos Servicios de Alta Calidad</h2>
+    <p class="service-text">
+      Nuestros servicios se centran en poder ofrecer la mejor atención,
+      brindandote un monitoreo de glucosa basado en inteligencia artificial,
+      mediante la cual podremos ofrecerte sugerencias de alimentos saludables
+      que pueden ayudarte a llevar una vida plena, ya que podrémos monitorear
+      cualquier cambio y ofrecerte la mejor solución en caso de que los niveles
+      de glucosa sean altos.
+    </p>
+    <div class="services-details">
+      <div class="service">
+        <div class="service-icon">
+          <fa-icon [icon]="stethoscope"></fa-icon>
+        </div>
+        <h3 class="service-title">Consultas</h3>
+        <p class="service-description">
+          Podrás ser atendido por alguno de nuestros profesionales médicos, en
+          case de que lo desees.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-icon">
+          <fa-icon [icon]="clipboard"></fa-icon>
+        </div>
+        <h3 class="service-title">Tratamiento</h3>
+        <p class="service-description">
+          Nuestros profesionales podrán ofrecerte un tratamiento totalmente
+          presonalizado.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-icon">
+          <fa-icon [icon]="utencils"></fa-icon>
+        </div>
+        <h3 class="service-title">Alimentación</h3>
+        <p class="service-description">
+          Obtendrás diario recetas de alimentos saludables basaas en tus gustos
+          para cuidar tu estilo de vida.
+        </p>
+      </div>
+      <div class="service">
+        <div class="service-icon">
+          <fa-icon [icon]="pills"></fa-icon>
+        </div>
+        <h3 class="service-title">Diagnósticos</h3>
+        <p class="service-description">
+          Mediante una inteligencia artificial podremos brindar una lista de
+          posibles enfermedades.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contact-section">
+  <article class="contact">
+    <h2 class="title">Contáctanos</h2>
+    <form [formGroup]="contactForm" class="contact-form">
+      <mat-form-field>
+        <mat-label>Nombre Completo : </mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="name"
+          placeholder="Ingresa tu nombre"
+        />
+        <mat-error *ngIf="hasError('name', 'required')">
+          El nombre es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Correo Electrónico : </mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="someone@somemail.com"
+        />
+        <mat-error *ngIf="hasError('email', 'email')">
+          Por favor ingresa un correo electrónico válido
+        </mat-error>
+        <mat-error *ngIf="hasError('email', 'required')">
+          El correo electrónico es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Mensaje : </mat-label>
+        <textarea
+          matInput
+          placeholder="Escríbenos...."
+          formControlName="desc"
+        ></textarea>
+        <mat-error *ngIf="hasError('desc', 'required')">
+          El mensaje es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <button routerLink="/services" class="button btn-primary">
+        Enviar Mensaje
+      </button>
+    </form>
+  </article>
+  <article class="contact-image"></article>
+</section>
+<app-footer></app-footer>
