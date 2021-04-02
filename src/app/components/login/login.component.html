@@ -1,1 +1,70 @@
-<p>login works!</p>
+<section class="login-page">
+  <article class="login-hero">
+    <img src="./assets/images/loginHero.png" alt="" />
+  </article>
+  <article class="login">
+    <div class="login-container">
+      <div class="login-header">
+        <img src="./assets/images/logo.png" alt="" class="login-logo" />
+        <h1 class="title">Bienvenido de Nuevo</h1>
+        <button class="btn social-btn google">
+          <img src="./assets/images/google.png" alt="google-login" />
+          <span>Iniciar Sesión con Google</span>
+        </button>
+      </div>
+      <div class="login-form">
+        <form>
+          <div class="field">
+            <label class="label">Correo Electrónico :</label>
+            <div class="control has-icons-left has-icons-right">
+              <!-- is-success -->
+              <input
+                class="input"
+                type="email"
+                placeholder="someone@somemail.com"
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="emailIcon"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <fa-icon [icon]="checkIcon"></fa-icon>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Contraseña :</label>
+            <div class="control has-icons-left has-icons-right">
+              <!-- is-success -->
+              <input
+                class="input"
+                type="email"
+                placeholder="someone@somemail.com"
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="lockIcon"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <fa-icon [icon]="checkIcon"></fa-icon>
+              </span>
+            </div>
+          </div>
+          <a class="forgot-password" routerLink="/reset-password"
+            >¿Perdiste tu contraseña?</a
+          >
+          <div class="field">
+            <div class="control">
+              <button class="button btn-login">Iniciar Sesión</button>
+            </div>
+          </div>
+        </form>
+        <span class="register-link"
+          >¿Necesitas una cuenta?<a routerLink="/register">
+            Crea una hoy mismo</a
+          ></span
+        >
+      </div>
+    </div>
+  </article>
+</section>
+
+<fa-icon [icon]="arrowIcon" class="back-link" routerLink="/"></fa-icon>

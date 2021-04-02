@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 // Accordion
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatIconModule } from '@angular/material/icon';
     NavbarComponent,
     NotFoundComponent,
     FooterComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
