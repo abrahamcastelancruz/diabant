@@ -13,47 +13,114 @@
         </button>
       </div>
       <div class="login-form">
-        <form>
+        <form [formGroup]="loginForm">
           <div class="field">
             <label class="label">Correo Electrónico :</label>
             <div class="control has-icons-left has-icons-right">
-              <!-- is-success -->
               <input
                 class="input"
                 type="email"
+                id="userEmail"
                 placeholder="someone@somemail.com"
+                formControlName="email"
+                [ngClass]="{
+                  'is-danger': validateUserEmail(),
+                  'is-success':
+                    !validateUserEmail() && loginForm.get('email').touched
+                }"
               />
               <span class="icon is-small is-left">
                 <fa-icon [icon]="emailIcon"></fa-icon>
               </span>
               <span class="icon is-small is-right">
-                <fa-icon [icon]="checkIcon"></fa-icon>
+                <fa-icon
+                  [icon]="checkIcon"
+                  *ngIf="!validateUserEmail() && loginForm.get('email').touched"
+                ></fa-icon>
+                <fa-icon
+                  [icon]="errorIcon"
+                  *ngIf="validateUserEmail()"
+                ></fa-icon>
               </span>
             </div>
+            <p
+              class="help"
+              [ngClass]="{
+                'is-danger': validateUserEmail(),
+                'is-success':
+                  !validateUserEmail() && loginForm.get('email').touched
+              }"
+            >
+              {{
+                validateUserEmail()
+                  ? "Ingresa un Correo Electrónico Válido"
+                  : ""
+              }}
+              {{
+                !validateUserEmail() && loginForm.get("email").touched
+                  ? "Correo Electrónico Válido"
+                  : ""
+              }}
+            </p>
           </div>
           <div class="field">
             <label class="label">Contraseña :</label>
             <div class="control has-icons-left has-icons-right">
-              <!-- is-success -->
               <input
                 class="input"
-                type="email"
-                placeholder="someone@somemail.com"
+                type="password"
+                placeholder="***********"
+                formControlName="password"
+                [ngClass]="{
+                  'is-danger': validateUserPassword(),
+                  'is-success':
+                    !validateUserPassword() && loginForm.get('password').touched
+                }"
               />
               <span class="icon is-small is-left">
                 <fa-icon [icon]="lockIcon"></fa-icon>
               </span>
               <span class="icon is-small is-right">
-                <fa-icon [icon]="checkIcon"></fa-icon>
+                <fa-icon
+                  [icon]="checkIcon"
+                  *ngIf="
+                    !validateUserPassword() && loginForm.get('password').touched
+                  "
+                ></fa-icon>
+                <fa-icon
+                  [icon]="errorIcon"
+                  *ngIf="validateUserPassword()"
+                ></fa-icon>
               </span>
             </div>
+            <p
+              class="help"
+              [ngClass]="{
+                'is-danger': validateUserPassword(),
+                'is-success':
+                  !validateUserPassword() && loginForm.get('password').touched
+              }"
+            >
+              {{
+                validateUserPassword()
+                  ? "Ingresa una Contraseña con Mínimo 6 Caracteres de Longitud"
+                  : ""
+              }}
+              {{
+                !validateUserPassword() && loginForm.get("password").touched
+                  ? "Contraseña Válida"
+                  : ""
+              }}
+            </p>
           </div>
           <a class="forgot-password" routerLink="/reset-password"
             >¿Perdiste tu contraseña?</a
           >
           <div class="field">
             <div class="control">
-              <button class="button btn-login">Iniciar Sesión</button>
+              <button class="button btn-login" (click)="userLogin()">
+                Iniciar Sesión
+              </button>
             </div>
           </div>
         </form>

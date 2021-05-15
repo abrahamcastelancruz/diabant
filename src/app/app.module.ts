@@ -29,6 +29,22 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+// Enviroment
+import { environment } from '../environments/environment.prod';
+
+// Services
+import { AuthServiceService } from './services/auth-service.service';
+
+// Guards
+import { AuthGuard } from './guards/auth.guard';
+import { HomeDashboardComponent } from './dashboard/home-dashboard/home-dashboard.component';
+import { CompleteUserInfoComponent } from './dashboard/complete-user-info/complete-user-info.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +59,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     NotFoundComponent,
     FooterComponent,
     ForgotPasswordComponent,
+    HomeDashboardComponent,
+    CompleteUserInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,8 +72,12 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     MatInputModule,
     MatExpansionModule,
     MatIconModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthServiceService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

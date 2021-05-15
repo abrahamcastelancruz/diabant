@@ -1,0 +1,201 @@
+<section class="user-complete-info">
+  <article class="user-info-header">
+    <fa-icon [icon]="menuIcon" (click)="showSidebarMenu()"></fa-icon>
+    <img src="./assets/images/logo.png" alt="" />
+    <div class="option-icon">
+      <fa-icon [icon]="infoIcon"></fa-icon>
+      <fa-icon [icon]="salirIcon" class="ml-4"></fa-icon>
+    </div>
+  </article>
+  <article class="complete-info container mt-4 pb-4">
+    <div class="notification is-info is-light">
+      Estás a punto de poder disfrutar de todos nuestros servicios pero antes
+      necesitamos un poco de información reelevante para poder personalizar el
+      sitio de acuerdo a tus necesidades!
+    </div>
+
+    <div class="user-info">
+      <h1 class="subtitle is-1">Información Personal</h1>
+      <form>
+        <div class="field">
+          <label class="label">Nombre :</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Ingresa tu nombre" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Apellido Paterno :</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Ingresa tu Apellido Paterno"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Apellido Materno :</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Ingresa tu Apellido Materno"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Correo Electrónico : </label>
+          <div class="control">
+            <input class="input" type="email" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Número Telefónico :</label>
+          <div class="control">
+            <input
+              class="input"
+              type="tel"
+              placeholder="Ingresa tu Correo Electrónico"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">País :</label>
+          <div class="select is-medium">
+            <select>
+              <option *ngFor="let pais of AllCountries">
+                {{ pais.country }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Estado :</label>
+          <div class="select is-medium">
+            <select>
+              <option>Tipo A+</option>
+              <option>Tipo A-</option>
+              <option>Tipo B+</option>
+              <option>Tipo B-</option>
+              <option>Tipo AB+</option>
+              <option>Tipo AB-</option>
+              <option>Tipo O+</option>
+              <option>Tipo O-</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Dirección : </label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Ingresa tu Dirección"
+            />
+          </div>
+        </div>
+        <div class="field mb-4">
+          <label class="label">Código Postal : </label>
+          <div class="control">
+            <input
+              class="input"
+              type="tel"
+              placeholder="Ingresa tu Código Postal"
+            />
+          </div>
+        </div>
+        <h1 class="subtitle is-1">Información Médica</h1>
+        <div class="field">
+          <label class="label">Edad: </label>
+          <div class="control">
+            <input
+              class="input"
+              type="number"
+              placeholder="Ingresa tu Altura"
+              max="100"
+              min="18"
+              value="18"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Altura: </label>
+          <div class="control">
+            <input
+              class="input"
+              type="number"
+              placeholder="Ingresa tu Altura"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Peso (Kg) : </label>
+          <div class="control">
+            <input
+              class="input"
+              type="number"
+              placeholder="Ingresa tu Peso en Kg"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Tipo de Sangre : </label>
+          <div class="select is-medium">
+            <select>
+              <option>Tipo A+</option>
+              <option>Tipo A-</option>
+              <option>Tipo B+</option>
+              <option>Tipo B-</option>
+              <option>Tipo AB+</option>
+              <option>Tipo AB-</option>
+              <option>Tipo O+</option>
+              <option>Tipo O-</option>
+            </select>
+          </div>
+        </div>
+        <div class="field mb-4">
+          <label class="label">Último nivel de glucosa : </label>
+          <div class="control">
+            <input
+              class="input"
+              type="number"
+              placeholder="Ingresa tu Último Nivel de Glucosa"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button btn-login">Completar Registro</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </article>
+</section>
+
+<section class="sidebar-menu" id="sidebar">
+  <img src="./assets/images/logo.png" alt="" />
+  <hr />
+  <nav class="nav">
+    <div>
+      <a href="/" class="sidebar-link">
+        <fa-icon [icon]="homeIcon" class="sidebar-icon"></fa-icon>
+        <span class="sidebar-link-name">Inicio</span>
+      </a>
+      <a href="/" class="sidebar-link">
+        <fa-icon [icon]="infoIcon" class="sidebar-icon"></fa-icon>
+        <span class="sidebar-link-name">Información</span>
+      </a>
+      <a href="/" class="sidebar-link">
+        <fa-icon [icon]="salirIcon" class="sidebar-icon"></fa-icon>
+        <span class="sidebar-link-name">Salir</span>
+      </a>
+    </div>
+  </nav>
+  <fa-icon
+    [icon]="closeIcon"
+    class="close-icon"
+    id="close-icon"
+    (click)="hideSidebarMenu()"
+  ></fa-icon>
+</section>

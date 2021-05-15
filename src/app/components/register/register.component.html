@@ -1,1 +1,189 @@
-<p>register works!</p>
+<section class="login-page">
+  <article class="login">
+    <div class="login-container">
+      <div class="login-header">
+        <a routerLink="/login" class="forgot-password"
+          >¿Ya tienes una cuenta de Diabant?</a
+        >
+        <h1 class="title">¡Registrate ahora!</h1>
+      </div>
+      <div class="login-form">
+        <form [formGroup]="registerForm">
+          <div class="field">
+            <label class="label">Correo Electrónico :</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input"
+                type="email"
+                id="userEmail"
+                placeholder="someone@somemail.com"
+                formControlName="email"
+                [ngClass]="{
+                  'is-danger': validateUserEmail(),
+                  'is-success':
+                    !validateUserEmail() && registerForm.get('email').touched
+                }"
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="emailIcon"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <fa-icon
+                  [icon]="checkIcon"
+                  *ngIf="
+                    !validateUserEmail() && registerForm.get('email').touched
+                  "
+                ></fa-icon>
+                <fa-icon
+                  [icon]="errorIcon"
+                  *ngIf="validateUserEmail()"
+                ></fa-icon>
+              </span>
+            </div>
+            <p
+              class="help"
+              [ngClass]="{
+                'is-danger': validateUserEmail(),
+                'is-success':
+                  !validateUserEmail() && registerForm.get('email').touched
+              }"
+            >
+              {{
+                validateUserEmail()
+                  ? "Ingresa un Correo Electrónico Válido"
+                  : ""
+              }}
+              {{
+                !validateUserEmail() && registerForm.get("email").touched
+                  ? "Correo Electrónico Válido"
+                  : ""
+              }}
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Contraseña :</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input"
+                type="password"
+                id="userPassword"
+                placeholder="***********"
+                formControlName="password"
+                [ngClass]="{
+                  'is-danger': validateUserPassword(),
+                  'is-success':
+                    !validateUserPassword() &&
+                    registerForm.get('password').touched
+                }"
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="lockIcon"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <fa-icon
+                  [icon]="checkIcon"
+                  *ngIf="
+                    !validateUserPassword() &&
+                    registerForm.get('password').touched
+                  "
+                ></fa-icon>
+                <fa-icon
+                  [icon]="errorIcon"
+                  *ngIf="validateUserPassword()"
+                ></fa-icon>
+              </span>
+            </div>
+            <p
+              class="help"
+              [ngClass]="{
+                'is-danger': validateUserPassword(),
+                'is-success':
+                  !validateUserPassword() &&
+                  registerForm.get('password').touched
+              }"
+            >
+              {{
+                validateUserPassword()
+                  ? "Ingresa una Contraseña con Mínimo 6 Caracteres de Longitud"
+                  : ""
+              }}
+              {{
+                !validateUserPassword() && registerForm.get("password").touched
+                  ? "Contraseña Válida"
+                  : ""
+              }}
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Confirmar Contraseña :</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                class="input"
+                type="password"
+                placeholder="***********"
+                id="userConfirmPassword"
+                formControlName="confirmPassword"
+                [ngClass]="{
+                  'is-danger': validateConfirmPassword(),
+                  'is-success':
+                    !validateConfirmPassword() &&
+                    registerForm.get('confirmPassword').touched
+                }"
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="lockIcon"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <fa-icon
+                  [icon]="checkIcon"
+                  *ngIf="
+                    !validateConfirmPassword() &&
+                    registerForm.get('confirmPassword').touched
+                  "
+                ></fa-icon>
+                <fa-icon
+                  [icon]="errorIcon"
+                  *ngIf="validateConfirmPassword()"
+                ></fa-icon>
+              </span>
+            </div>
+            <p
+              class="help"
+              [ngClass]="{
+                'is-danger': validateConfirmPassword(),
+                'is-success':
+                  !validateConfirmPassword() &&
+                  registerForm.get('confirmPassword').touched
+              }"
+            >
+              {{
+                validateConfirmPassword() ? "Las Contraseñas no Coinciden" : ""
+              }}
+              {{
+                !validateConfirmPassword() &&
+                registerForm.get("confirmPassword").touched
+                  ? "Contraseñas Válidas"
+                  : ""
+              }}
+            </p>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button
+                class="button btn-login btn-register"
+                (click)="registerUser()"
+              >
+                Crear Cuenta
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </article>
+  <article class="login-hero">
+    <img src="./assets/images/registerHero.png" alt="" />
+  </article>
+</section>
+
+<fa-icon [icon]="arrowIcon" class="back-link" routerLink="/login"></fa-icon>
