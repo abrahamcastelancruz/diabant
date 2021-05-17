@@ -3,8 +3,8 @@
     <fa-icon [icon]="menuIcon" (click)="showSidebarMenu()"></fa-icon>
     <img src="./assets/images/logo.png" alt="" />
     <div class="option-icon">
-      <fa-icon [icon]="infoIcon"></fa-icon>
-      <fa-icon [icon]="salirIcon" class="ml-4"></fa-icon>
+      <a routerLink="/faq"><fa-icon [icon]="infoIcon"></fa-icon></a>
+      <fa-icon [icon]="salirIcon" (click)="logout()" class="ml-4"></fa-icon>
     </div>
   </article>
   <article class="complete-info container mt-4 pb-4">
@@ -14,119 +14,323 @@
       sitio de acuerdo a tus necesidades!
     </div>
 
-    <div class="user-info">
-      <h1 class="subtitle is-1">Información Personal</h1>
-      <form>
-        <div class="field">
-          <label class="label">Nombre :</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Ingresa tu nombre" />
+    <div class="user-info" *ngIf="User">
+      <form [formGroup]="completeInfoForm">
+        <div>
+          <h1 class="subtitle is-1">Información Personal</h1>
+          <div class="field">
+            <label class="label">Nombre :</label>
+            <div class="control">
+              <input class="input" type="text" id="name" placeholder="Ingresa tu Nombre" formControlName="name"  [ngClass]="{
+                'is-danger': validateUserName(),
+                'is-success':
+                  !validateUserName() && completeInfoForm.get('name').touched
+              }"/>
+            </div>
+            <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserName(),
+              'is-success':
+                !validateUserName() && completeInfoForm.get('name').touched
+            }"
+          >
+            {{
+              validateUserName()
+                ? "Ingresa tu Nombre"
+                : ""
+            }}
+            {{
+              !validateUserName() && completeInfoForm.get("name").touched &&  completeInfoForm.get("name").value !== ''
+                ? "Nombre Registrado Correctamente"
+                : ""
+            }}
+          </p>
+          </div>
+          <div class="field">
+            <label class="label">Apellido Paterno :</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Ingresa tu Apellido Paterno"
+                id="apePat"
+                formControlName="apePat"
+                [ngClass]="{
+                  'is-danger': validateUserApePat(),
+                  'is-success':
+                    !validateUserApePat() && completeInfoForm.get('apePat').touched
+                }"
+              />
+            </div>
+            <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserApePat(),
+              'is-success':
+                !validateUserApePat() && completeInfoForm.get('apePat').touched
+            }"
+          >
+            {{
+              validateUserApePat()
+                ? "Ingresa tu Apellido Paterno"
+                : ""
+            }}
+            {{
+              !validateUserApePat() && completeInfoForm.get("apePat").touched &&  completeInfoForm.get("apePat").value !== ''
+                ? "Apellido Registrado Correctamente"
+                : ""
+            }}
+          </p>
+          </div>
+          <div class="field">
+            <label class="label">Apellido Materno :</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Ingresa tu Apellido Materno"
+                formControlName="apeMat"
+                id="apeMat"
+                [ngClass]="{
+                  'is-danger': validateUserApeMat(),
+                  'is-success':
+                    !validateUserApeMat() && completeInfoForm.get('apeMat').touched
+                }"
+              />
+            </div>
+            <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserApeMat(),
+              'is-success':
+                !validateUserApeMat() && completeInfoForm.get('apeMat').touched
+            }"
+          >
+            {{
+              validateUserApeMat()
+                ? "Ingresa tu Apellido Materno"
+                : ""
+            }}
+            {{
+              !validateUserApeMat() && completeInfoForm.get("apeMat").touched &&  completeInfoForm.get("apeMat").value !== ''
+                ? "Apellido Registrado Correctamente"
+                : ""
+            }}
+          </p>
+          </div>
+          <div class="field">
+            <label class="label">Correo Electrónico : </label>
+            <div class="control">
+              <input class="input" type="email" id="email" formControlName="email" value="{{User.email}}" disabled/>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Número Telefónico :</label>
+            <div class="control">
+              <input
+                class="input"
+                type="tel"
+                id="cel"
+                placeholder="Ingresa tu Número de Celular"
+                formControlName="cel"
+                [ngClass]="{
+                  'is-danger': validateUserCelphone(),
+                  'is-success':
+                    !validateUserCelphone() && completeInfoForm.get('cel').touched
+                }"
+              />
+            </div>
+            <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserCelphone(),
+              'is-success':
+                !validateUserCelphone() && completeInfoForm.get('cel').touched
+            }"
+          >
+            {{
+              validateUserCelphone()
+                ? "Ingresa tu Número de Celular"
+                : ""
+            }}
+            {{
+              !validateUserCelphone() && completeInfoForm.get("cel").touched &&  completeInfoForm.get("cel").value !== ''
+                ? "Número Telefónico Registrado Correctamente"
+                : ""
+            }}
+          </p>
+          </div>
+          <div class="field">
+            <label class="label">País :</label>
+            <div class="select is-medium">
+              <select (change)="getStatesFromCountry(country.value)" #country formControlName="country">
+                <option disabled selected>Selecciona un País</option>
+                <option *ngFor="let pais of AllCountries">
+                  {{ pais.country }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Estado :</label>
+            <div class="select is-medium">
+              <select [disabled]="States.length === 0" formControlName="state">
+                <option *ngFor="let state of States">
+                  {{state.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Dirección : </label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Ingresa tu Dirección"
+                formControlName="direction"
+                id="direction"
+                [ngClass]="{
+                  'is-danger': validateUserDirection(),
+                  'is-success':
+                    !validateUserDirection() && completeInfoForm.get('direction').touched
+                }"
+              />
+            </div>
+            <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserDirection(),
+              'is-success':
+                !validateUserDirection() && completeInfoForm.get('direction').touched
+            }"
+          >
+            {{
+              validateUserDirection()
+                ? "Ingresa tu Dirección"
+                : ""
+            }}
+            {{
+              !validateUserDirection() && completeInfoForm.get("direction").touched &&  completeInfoForm.get("direction").value !== ''
+                ? "Dirección Registrada Correctamente"
+                : ""
+            }}
+          </p>
+          </div>
+          <div class="field mb-4">
+            <label class="label">Código Postal : </label>
+            <div class="control">
+              <input
+                class="input"
+                type="tel"
+                placeholder="Ingresa tu Código Postal"
+                formControlName="ccp"
+                id="ccp"
+                [ngClass]="{
+                  'is-danger': validateUserCcp(),
+                  'is-success':
+                    !validateUserCcp() && completeInfoForm.get('ccp').touched
+                }"
+              />
+            </div>
+            <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserCcp(),
+              'is-success':
+                !validateUserCcp() && completeInfoForm.get('ccp').touched
+            }"
+          >
+            {{
+              validateUserCcp()
+                ? "Ingresa tu Código Postal"
+                : ""
+            }}
+            {{
+              !validateUserCcp() && completeInfoForm.get("ccp").touched &&  completeInfoForm.get("ccp").value !== ''
+                ? "Código Postal Registrado Correctamente"
+                : ""
+            }}
+          </p>
           </div>
         </div>
-        <div class="field">
-          <label class="label">Apellido Paterno :</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              placeholder="Ingresa tu Apellido Paterno"
-            />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Apellido Materno :</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              placeholder="Ingresa tu Apellido Materno"
-            />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Correo Electrónico : </label>
-          <div class="control">
-            <input class="input" type="email" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Número Telefónico :</label>
-          <div class="control">
-            <input
-              class="input"
-              type="tel"
-              placeholder="Ingresa tu Correo Electrónico"
-            />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">País :</label>
-          <div class="select is-medium">
-            <select>
-              <option *ngFor="let pais of AllCountries">
-                {{ pais.country }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Estado :</label>
-          <div class="select is-medium">
-            <select>
-              <option>Tipo A+</option>
-              <option>Tipo A-</option>
-              <option>Tipo B+</option>
-              <option>Tipo B-</option>
-              <option>Tipo AB+</option>
-              <option>Tipo AB-</option>
-              <option>Tipo O+</option>
-              <option>Tipo O-</option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Dirección : </label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              placeholder="Ingresa tu Dirección"
-            />
-          </div>
-        </div>
-        <div class="field mb-4">
-          <label class="label">Código Postal : </label>
-          <div class="control">
-            <input
-              class="input"
-              type="tel"
-              placeholder="Ingresa tu Código Postal"
-            />
-          </div>
-        </div>
-        <h1 class="subtitle is-1">Información Médica</h1>
+        <div>
+          <h1 class="subtitle is-1">Información Médica</h1>
         <div class="field">
           <label class="label">Edad: </label>
           <div class="control">
             <input
               class="input"
               type="number"
-              placeholder="Ingresa tu Altura"
+              placeholder="Ingresa tu Edad"
               max="100"
               min="18"
+              id="age"
               value="18"
+              formControlName="age"
+              [ngClass]="{
+                'is-danger': validateUserAge(),
+                'is-success':
+                  !validateUserAge() && completeInfoForm.get('age').touched
+              }"
             />
           </div>
+          <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserAge(),
+              'is-success':
+                !validateUserAge() && completeInfoForm.get('age').touched
+            }"
+          >
+            {{
+              validateUserAge()
+                ? "Ingresa tu Edad"
+                : ""
+            }}
+            {{
+              !validateUserAge() && completeInfoForm.get("age").touched &&  completeInfoForm.get("age").value !== ''
+                ? "Edad Registrada Correctamente"
+                : ""
+            }}
+          </p>
         </div>
         <div class="field">
-          <label class="label">Altura: </label>
+          <label class="label">Altura (m): </label>
           <div class="control">
             <input
               class="input"
               type="number"
               placeholder="Ingresa tu Altura"
+              formControlName="height"
+              id="height"
+              [ngClass]="{
+                'is-danger': validateUserHeight(),
+                'is-success':
+                  !validateUserHeight() && completeInfoForm.get('height').touched
+              }"
             />
           </div>
+          <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserHeight(),
+              'is-success':
+                !validateUserHeight() && completeInfoForm.get('height').touched
+            }"
+          >
+            {{
+              validateUserHeight()
+                ? "Ingresa tu Altura"
+                : ""
+            }}
+            {{
+              !validateUserHeight() && completeInfoForm.get("height").touched &&  completeInfoForm.get("height").value !== ''
+                ? "Altura Registrada Correctamente"
+                : ""
+            }}
+          </p>
         </div>
         <div class="field">
           <label class="label">Peso (Kg) : </label>
@@ -135,13 +339,39 @@
               class="input"
               type="number"
               placeholder="Ingresa tu Peso en Kg"
+              formControlName="weight"
+              id="weight"
+              [ngClass]="{
+                'is-danger': validateUserWeight(),
+                'is-success':
+                  !validateUserWeight() && completeInfoForm.get('weight').touched
+              }"
             />
           </div>
+          <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserWeight(),
+              'is-success':
+                !validateUserWeight() && completeInfoForm.get('weight').touched
+            }"
+          >
+            {{
+              validateUserWeight()
+                ? "Ingresa tu Peso"
+                : ""
+            }}
+            {{
+              !validateUserWeight() && completeInfoForm.get("weight").touched &&  completeInfoForm.get("weight").value !== ''
+                ? "Peso Registrado Correctamente"
+                : ""
+            }}
+          </p>
         </div>
         <div class="field">
           <label class="label">Tipo de Sangre : </label>
           <div class="select is-medium">
-            <select>
+            <select formControlName="blood">
               <option>Tipo A+</option>
               <option>Tipo A-</option>
               <option>Tipo B+</option>
@@ -160,13 +390,40 @@
               class="input"
               type="number"
               placeholder="Ingresa tu Último Nivel de Glucosa"
+              formControlName="glucose"
+              id="glucose"
+              [ngClass]="{
+                'is-danger': validateUserGlucose(),
+                'is-success':
+                  !validateUserGlucose() && completeInfoForm.get('glucose').touched
+              }"
             />
           </div>
+          <p
+            class="help"
+            [ngClass]="{
+              'is-danger': validateUserGlucose(),
+              'is-success':
+                !validateUserGlucose() && completeInfoForm.get('glucose').touched
+            }"
+          >
+            {{
+              validateUserGlucose()
+                ? "Ingresa tu Peso"
+                : ""
+            }}
+            {{
+              !validateUserGlucose() && completeInfoForm.get("glucose").touched &&  completeInfoForm.get("glucose").value !== ''
+                ? "Peso Registrado Correctamente"
+                : ""
+            }}
+          </p>
         </div>
         <div class="field">
           <div class="control">
-            <button class="button btn-login">Completar Registro</button>
+            <button class="button btn-login" (click)="completeUserRegister()">Completar Registro</button>
           </div>
+        </div>
         </div>
       </form>
     </div>
@@ -178,15 +435,15 @@
   <hr />
   <nav class="nav">
     <div>
-      <a href="/" class="sidebar-link">
+      <a routerLink="/home" class="sidebar-link">
         <fa-icon [icon]="homeIcon" class="sidebar-icon"></fa-icon>
         <span class="sidebar-link-name">Inicio</span>
       </a>
-      <a href="/" class="sidebar-link">
+      <a routerLink="/faq" class="sidebar-link">
         <fa-icon [icon]="infoIcon" class="sidebar-icon"></fa-icon>
         <span class="sidebar-link-name">Información</span>
       </a>
-      <a href="/" class="sidebar-link">
+      <a (click)="logout()" class="sidebar-link">
         <fa-icon [icon]="salirIcon" class="sidebar-icon"></fa-icon>
         <span class="sidebar-link-name">Salir</span>
       </a>

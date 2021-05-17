@@ -12,9 +12,9 @@ export class CompleteUserInfoService {
     return this.http.get('https://countriesnow.space/api/v0.1/countries/');
   }
 
-  public getStatesFromCountry(): Observable<any> {
-    return this.http.get(
-      'https://countriesnow.space/api/v0.1/countries/states'
+  public getStatesFromCountry(country): Observable<any> {
+    return this.http.post(
+      'https://countriesnow.space/api/v0.1/countries/states', country
     );
   }
 }

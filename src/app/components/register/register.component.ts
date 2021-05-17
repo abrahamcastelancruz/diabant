@@ -16,6 +16,7 @@ import {
   faUser,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private afs: AngularFirestore,
-    private afauth: AngularFireAuth
+    private afauth: AngularFireAuth,
   ) {}
 
   ngOnInit(): void {
@@ -143,7 +144,6 @@ export class RegisterComponent implements OnInit {
             title: '¡Error al Crear Cuenta!',
             text: error.message,
             showConfirmButton: true,
-            allowOutsideClick: false,
           });
         });
     }

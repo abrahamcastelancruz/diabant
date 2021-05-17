@@ -95,3 +95,30 @@ select,
 .select {
   width: 100% !important;
 }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .user-info-header img {
+    max-width: 75%;
+  }
+
+  .sidebar-menu img {
+    max-width: 40%;
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  form{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 2rem;
+  }
+  .user-info-header img {
+    width: 30%;
+    margin: 0 auto;
+  }
+  .user-info-header{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
+}
